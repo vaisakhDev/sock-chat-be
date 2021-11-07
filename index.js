@@ -13,8 +13,6 @@ const io = new Server(server, {cors : {
     origins: ['http://localhost:4200'],
  }},);
 
-const port = 8080;
-
 app.get('/', (req, res) => {
     res.send("Hello World");
 })
@@ -32,7 +30,7 @@ io.on('connection', (socket) => {
     })
 });
 
-server.listen(port, () => {
-    console.log(`App is listening at http://localhost:${port}`);
+server.listen(process.env.PORT || 8080, () => {
+    console.log(`App started`);
 
 })
