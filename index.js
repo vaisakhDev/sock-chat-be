@@ -3,6 +3,9 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require("morgan");
 
+
+const { v4: uuidv4 } = require('uuid');
+
 const app = express();
 app.use(morgan('tiny'));
 app.use(cors());
@@ -27,6 +30,21 @@ io.on('connection', (socket) => {
     socket.on('notification', msg => {
         console.log(msg);
         io.emit('notification', msg);
+    })
+    
+    socket.on('offer', msg => {
+        console.log(msg);
+        socket.broadcast.emit('offer', msg);
+    })
+    
+    socket.on('answer', msg => {
+        console.log(msg);
+        socket.broadcast.emit('answer', msg);
+    })
+    
+    socket.on('icecandidate', msg => {
+        console.log(msg);
+        socket.broadcast.emit('icecandidate', msg);
     })
 });
 
