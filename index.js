@@ -20,9 +20,15 @@ app.get('/', (req, res) => {
     res.send("Hello World");
 })
 
+let isFirstPeer = true;
+
 io.on('connection', (socket) => {  
     console.log('A user connected');
     console.log(socket.id);
+    if(isFirstPeer) {
+        socket.emit('info', "first")   ;
+        isFirstPeer = false;
+    }
     socket.on('message', msg => {
         console.log(msg);
         socket.broadcast.emit('message', msg);
