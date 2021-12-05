@@ -32,14 +32,19 @@ io.on('connection', (socket) => {
         io.emit('notification', msg);
     })
     
-    socket.on('offer', msg => {
-        console.log(msg);
-        socket.broadcast.emit('offer', msg);
-    })
+    // socket.on('offer', msg => {
+    //     console.log(msg);
+    //     socket.broadcast.emit('offer', msg);
+    // })
     
-    socket.on('answer', msg => {
+    // socket.on('answer', msg => {
+    //     console.log(msg);
+    //     socket.broadcast.emit('answer', msg);
+    // })
+
+    socket.on('description', msg => {
         console.log(msg);
-        socket.broadcast.emit('answer', msg);
+        socket.broadcast.emit('description', msg);
     })
     
     socket.on('icecandidate', msg => {
