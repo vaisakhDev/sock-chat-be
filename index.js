@@ -1,3 +1,4 @@
+require('dotenv').config(); // load environment variables from .env file
 const http = require('http');
 const express = require('express');
 const cors = require('cors');
@@ -26,6 +27,7 @@ io.on('connection', (socket) => {
     console.log('A user connected');
     console.log(socket.id);
     if(isFirstPeer) {
+        console.log("First Peer")
         socket.emit('info', "first")   ;
         isFirstPeer = false;
     }

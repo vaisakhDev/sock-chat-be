@@ -1,5 +1,5 @@
 # sock-chat-be
-Backend for simple scoket.io based chat application
+Signalling server for WebRTC Chat application
 
 ## Development
 `npm run start-dev`
